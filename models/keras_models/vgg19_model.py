@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import tensorflow as tf
 from utils import load_externals
-from vgg19 import *
+from keras.applications.vgg19 import *
 
 from keras_applications.imagenet_utils import _obtain_input_shape
 from keras.layers import Dense, Dropout, Activation, Flatten, Lambda
