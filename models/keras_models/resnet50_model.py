@@ -5,7 +5,7 @@ import tensorflow as tf
 from utils import load_externals
 from keras.applications.resnet50 import *
 
-from keras.applications.imagenet_utils import _obtain_input_shape
+from keras_applications.imagenet_utils import _obtain_input_shape
 from keras.layers import Dense, Dropout, Activation, Flatten, Lambda
 
 from .keras_models import scaling_tf
