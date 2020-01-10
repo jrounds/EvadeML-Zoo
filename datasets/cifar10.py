@@ -5,7 +5,7 @@ from utils import load_externals
 
 from models.carlini_models import carlini_cifar10_model
 #from models.cleverhans_models import cleverhans_cifar10_model
-from models.densenet_models import densenet_cifar10_model, get_densenet_weights_path
+#from models.densenet_models import densenet_cifar10_model, get_densenet_weights_path
 
 from keras.datasets import cifar10
 from keras.utils import np_utils
