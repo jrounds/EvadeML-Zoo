@@ -33,6 +33,7 @@ def get_robust_classifier_by_name(model, rc_name):
     return rc
 
 def evaluate_robustness(params_str, model, Y, X, Y_adv, attack_string_list, X_adv_list, fname_prefix, selected_idx_vis, result_folder):
+    attack_string_list = list(attack_string_list)
     if not os.path.isdir(result_folder):
         os.makedirs(result_folder)
     robustness_string_hash = hashlib.sha1(params_str.encode('utf-8')).hexdigest()[:5]
