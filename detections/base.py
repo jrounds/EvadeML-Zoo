@@ -151,7 +151,9 @@ class DetectionEvaluator:
             self.db.insert(rec)
 
     def get_data_from_db_records(self, recs):
+        
         if len(recs) == 0:
+            print("recs length 0 in get_data_from_db_records")
             return None, None
         X_idx = [rec['index'] for rec in recs]
         X = self.X_detect[np.array(X_idx)]
