@@ -16,9 +16,9 @@ class FeatureSqueezingRC:
         subject, params = parse_params(rc_name)
         assert subject == 'FeatureSqueezing'
 
-        if params.has_key('squeezer'):
+        if "squeezer" in params: #params.has_key('squeezer'):
             self.filter = get_squeezer_by_name(params['squeezer'], 'python')
-        elif params.has_key('squeezers'):
+        elif "squeezers" in params: #params.has_key('squeezers'):
             squeezer_names = params['squeezers'].split(',')
             self.filters = [ get_squeezer_by_name(squeezer_name, 'python') for squeezer_name in squeezer_names ]
 
