@@ -95,14 +95,15 @@ class DetectionEvaluator:
         Y_label_adv = Y_label[selected_idx]
 
         detection_db_path = os.path.join(self.task_dir, "detection_db_%s_clip_%s.json" % (attack_string_hash, clip))
-
+        print("Looking for %s" % detection_db_path)
         if os.path.isfile(detection_db_path):
+            print("... found %s and reloading" % detection_db_path)
             self.db = TinyDB(detection_db_path)
             self.query = Query()
             print ("Loaded an existing detection dataset.")
             return
         else:
-            print ("Preparing the detection dataset...")
+            print ("Preparing the detection dataset in %s..." % detection_db_path)
 
         # 1. Split Train and Test 
         random.seed(1234)
