@@ -316,8 +316,10 @@ class DetectionEvaluator:
                 X_fae, Y_fae = self.get_fae_testing_data()
             else:
                 X_fae, Y_fae = self.get_fae_data()
-            Y_test_pred, Y_test_pred_score = detector.test(X_fae)
-            _, tpr, _, tp, ap = evalulate_detection_test(Y_fae, Y_test_pred)
-            print ("Overall detection rate on FAEs: %.4f \t %3d/%3d" % (tpr, tp, ap))
-
+            if X_fae is not None:
+                Y_test_pred, Y_test_pred_score = detector.test(X_fae)
+                _, tpr, _, tp, ap = evalulate_detection_test(Y_fae, Y_test_pred)
+                print ("Overall detection rate on FAEs: %.4f \t %3d/%3d" % (tpr, tp, ap))
+            else:
+                print("FAE data must have had no failures... cannot run.")
         write_to_csv(to_csv, csv_fpath, fieldnames)
