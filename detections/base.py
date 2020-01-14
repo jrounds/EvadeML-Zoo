@@ -8,6 +8,7 @@ import random
 import pdb
 import sklearn
 import os
+from functools import reduce
 
 from sklearn.metrics import roc_curve, auc
 from .feature_squeezing import FeatureSqueezingDetector
