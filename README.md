@@ -1,4 +1,13 @@
-Forked to make run on keras 2.2.2
+# This version
+Forked to make run on keras 2.2.2 and python 3.
+
+
+Not all features are enabled but this command line runs:
+
+```bash
+ python main.py --dataset_name MNIST --model_name carlini --nb_examples 100 --balance_sampling --attacks "deepfool?overshoot=9&max_iter=50" --robustness "none;FeatureSqueezing?squeezer=bit_depth_1;" --detection "FeatureSqueezing?squeezers=bit_depth_1,median_filter_2_2&distance_measure=l1&fpr=0.05;" --visualize False
+```
+
 
 # EvadeML-Zoo
 
