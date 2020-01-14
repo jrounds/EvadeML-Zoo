@@ -212,23 +212,23 @@ def adaptive_bilateral_filter_tf(imgs, ksize, sigmaSpace, maxSigmaColor=20.0):
 
 none_tf = none_py = lambda x:x
 
+if False:
+    import sys, os
+    project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.append(project_path)
 
-import sys, os
-project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(project_path)
+    from externals.MagNet.worker import SimpleReformer
+    mnist_autoencoder_fpath = os.path.join(project_path, "downloads/MagNet/defensive_models/MNIST_I")
+    cifar10_autoencoder_fpath = os.path.join(project_path, "downloads/MagNet/defensive_models/CIFAR")
 
-from externals.MagNet.worker import SimpleReformer
-mnist_autoencoder_fpath = os.path.join(project_path, "downloads/MagNet/defensive_models/MNIST_I")
-cifar10_autoencoder_fpath = os.path.join(project_path, "downloads/MagNet/defensive_models/CIFAR")
+    reformer_mnist = SimpleReformer(mnist_autoencoder_fpath)
+    reformer_cifar10 = SimpleReformer(cifar10_autoencoder_fpath)
 
-reformer_mnist = SimpleReformer(mnist_autoencoder_fpath)
-reformer_cifar10 = SimpleReformer(cifar10_autoencoder_fpath)
+    def magnet_mnist_py(imgs):
+        return reformer_mnist.heal(imgs)
 
-def magnet_mnist_py(imgs):
-    return reformer_mnist.heal(imgs)
-
-def magnet_cifar10_py(imgs):
-    return reformer_cifar10.heal(imgs)
+    def magnet_cifar10_py(imgs):
+        return reformer_cifar10.heal(imgs)
 
 # Construct a name search function.
 def isfloat(value):
