@@ -174,8 +174,10 @@ def main(argv=None):
     X_test_adv_list = []
     X_test_adv_discretized_list = []
     Y_test_adv_discretized_pred_list = []
-
-    attack_string_list = filter(lambda x:len(x)>0, FLAGS.attacks.lower().split(';'))
+    print("Splitting attack string %s" % FLAGS.attacks.lower())
+    
+    attack_string_list = list(filter(lambda x:len(x)>0, FLAGS.attacks.lower().split(';')))
+    
     to_csv = []
 
     X_adv_cache_folder = os.path.join(FLAGS.result_folder, 'adv_examples')
