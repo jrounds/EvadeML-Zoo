@@ -82,7 +82,7 @@ class FeatureSqueezingDetector:
         else:
             self.threshold = None
             self.train_fpr = float(params['fpr'])
-
+        self.layer_models = {}
     def get_squeezer_by_name(self, name):
         return get_squeezer_by_name(name, 'python')
 
@@ -197,7 +197,13 @@ class FeatureSqueezingDetector:
         return distance
 
     def eval_layer_output(self, X, layer_id):
-        layer_output = Model(inputs=self.model.layers[0].input, outputs=self.model.layers[layer_id].output)
+        # WOW this was bad originally...  Never build a new model in a loop for each input...  Fixing
+        #layer_output = Model(inputs=self.model.layers[0].input, outputs=self.model.layers[layer_id].output)
+        if layer_id not in self.layer_models:
+            self.layer_models[layer_id] = Model(inputs=self.model.inputs, outputs=self.model.layers[layer_id].output)
+        layer_output = self.layer_models[layer_id]
+        print(self.model.inputs)
+        print(X.shape)
         return layer_output.predict(X)
 
 
