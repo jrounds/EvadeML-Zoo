@@ -77,7 +77,9 @@ class DetectionEvaluator:
             index, attack_id, misclassified, train
             14,     0,           0,             1
         """
-
+        print(attack_names)
+        attack_names = list(attack_names)
+        print(attack_names)
         self.attack_names = attack_names
         self.attack_name_id = {}
         self.attack_name_id['legitimate'] = 0
